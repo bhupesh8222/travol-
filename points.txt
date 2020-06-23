@@ -1,0 +1,50 @@
+
+//Whatever function is passed here will be called on every route, this is a middleware
+app.use(function(req, res, next) {
+    //res.locals.userName will be the variable to be passed.
+    res.locals.currentUser = req.user; //req.user contains the details of the user.
+    next();
+    //next function means to move in the next route.
+})
+
+
+Javascript array splice() method changes the content of an array, adding new elements while removing old elements.
+
+Syntax
+Its syntax is as follows −
+
+array.splice(index, howMany, [element1][, ..., elementN]);
+Parameter Details
+index − Index at which to start changing the array.
+
+howMany − An integer indicating the number of old array elements to remove. If howMany is 0, no elements are removed.
+
+element1, ..., elementN − The elements to add to the array. If you don't specify any elements, splice simply removes the elements from the array.
+
+
+re.redirect("back"), takes us to the previous page!
+
+
+
+Display the flex items with space between the lines:
+
+div {
+  display: flex;
+  justify-content: space-between;
+}
+
+Evenly spreads the distance between the child elements
+
+
+
+cover tells the browser to make sure the image always covers the entire container, 
+even if it has to stretch the image or cut a little bit off one of the edges. contain,
+ on the other hand, says to always show the whole image, even if that leaves a little 
+ space to the sides or bottom.
+
+ background-size: contain;
+ 
+LAST VERSION OF YELPCAMP!!
+
+AIzaSyBzmdo-hXj2KgiLeiBEAryTOa-El7xwo2Q
+API KEY

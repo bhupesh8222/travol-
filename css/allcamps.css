@@ -1,0 +1,46 @@
+/*.btn-info {
+    background-color: rgb(255, 199, 207);
+    border-color: rgb(255, 199, 207);
+}*/
+
+body {
+    height: 100%;
+    background-image: url(https://images.pexels.com/photos/1353938/pexels-photo-1353938.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260);
+    background-size: contain;
+}
+
+.jumbotron {
+    background-color: gainsboro;
+    border-radius: 15px;
+}
+
+#photo {
+    width: 90%;
+    height: 150px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+#photo:hover {
+    box-shadow: 0 0 4px 2px rgba(0, 140, 186);
+}
+
+.middle {
+    margin: 0 auto;
+}
+
+#like {
+    display: inline-block;
+}
+
+.post {
+    border-right: solid 2px black;
+    margin-bottom: 70px;
+    background-color: white;
+}
+
+#pname {
+    font-family: inherit;
+    text-shadow: 1px 2px #b8b8b8;
+}

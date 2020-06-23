@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add New Campground</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Pacifico&family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/editcampground.css">
+</head>
+
+<body>
+    <%- include("E:/Web D/Yelcamp/V8-FINAL/partials/navbar.ejs") %>
+        <h2>Edit -
+            <span id="postname"><%=camp.name%></span>
+        </h2>
+        <div id="div">
+            <form action='/camps/<%=camp._id%>?_method=PUT' enctype="multipart/form-data" method="post">
+                <input type="text" value="<%=camp.name%>" name="camp[name]" required>
+                <br>
+                <input type="file" value="<%=camp.img%>" accept="image/*" name='image'>
+                <br>
+                <textarea type="text" name="camp[description]" required><%=camp.description%></textarea>
+                <button class="btn btn-success ">SUMBIT</button>
+            </form>
+            <br>
+            <a class="btn btn-primary" href="/camps">Go Back</a>
+        </div>
+
+</body>
+
+</html>

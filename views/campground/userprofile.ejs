@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        <%=currentUser.username%>-My Profile
+    </title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/userprofile.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+
+<body>
+    <%- include("E:/Web D/Yelcamp/V8-FINAL/partials/navbar.ejs") %>
+        <div class="container">
+            <div id="top">
+                <div id="profile">
+                    <img id="profilepic" src="<%=currentUser.img%>">
+                    <hr>
+                    <%if(form=="yes"){%>
+                        <form action="/camps/<%=currentUser._id%>/addprofile/photo" enctype="multipart/form-data" method="POST">
+                            <input type="file" accept="image/*" name="image">
+                            <br>
+                            <br>
+                            <input type="submit" class="btn btn-outline-success btn-sm" value="Upload">
+                        </form>
+                        <%} else{%>
+                            <form class="pphoto" action="/camps/<%=currentUser._id%>/addprofile" method="GET">
+                                <button class="btn btn-outline-success btn-sm">Add New Profile Photo</button>
+                            </form>
+                            <%}%>
+                                <%if(form=="no"){%>
+                                    <br>
+                                    <h4>
+                                        <%=currentUser.username%>
+                                    </h4>
+                                    <p id='email'>
+                                        <a href="#">
+                                            <%=currentUser.email%>
+                                        </a>
+                                    </p>
+                                    <p class="lik"><strong>Total Posts:</strong>
+                                        <span class="number"><%=posts.length%></span>
+                                    </p>
+                                    <p class='lik'>
+                                        <%var likes=0%>
+                                            <%for(var i=0; i< posts.length; i++){%>
+                                                <%likes=likes+posts[i].likes.length%>
+                                                    <% }%>
+                                                        <strong>Total Likes:</strong>
+                                                        <span class="number"><%=likes%></span>
+                                    </p>
+                                    <%}%>
+                </div>
+                <div id="myprof">
+                    <div id="mpost" class="jumbotron">MY PROFILE
+                        <div>Your's best experience shared with us are here!</div>
+                    </div>
+                    <a href="/camps/new" class="btn btn-info add">Add New Post</a>
+                </div>
+            </div>
+            <hr>
+
+            <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+                <%for(var i=0; i<posts.length; i++){%>
+                    <div class="col-md-3 col-sm-6 post">
+                        <h5 id="name">
+                            <%= posts[i].name%>
+                        </h5>
+                        <img id="photo" src="<%=posts[i].img%>">
+                        <a href="/camps/<%=posts[i]._id%>" class="btn btn-success btn-sm">More Info</a>
+
+                        <form action="/camps/<%=posts[i]._id%>/like/3" method="POST">
+                            <!--If user is there and has already liked-->
+                            <%if(currentUser&&posts[i].likes.some(function(like){ return like.equals(currentUser._id) })){%>
+                                <button class="btn btn-sm btn-primary">
+                                <i class="fas fa-thumbs-up"></i> Liked (<%= posts[i].likes.length %>)
+                            </button>
+                                <!--Otherwise we willshow him dark button to tell it is not liked-->
+                                <%}else{%>
+                                    <button class="btn btn-sm btn-secondary">
+                                <i class="fas fa-thumbs-up"></i> Like (<%=posts[i].likes.length %>)
+                            </button>
+                                    <% }%>
+                        </form>
+
+                        <!--<%=posts[i].img%> This will not put up the string, so to make it string, it is wrapped inside the "" os src attribute -->
+                    </div>
+                    <%}%>
+            </div>
+        </div>
+
+</body>
+
+</html>

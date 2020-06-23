@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Postdetails-
+        <%=camp.name%>
+    </title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/thatcamp.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
+
+
+    <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital@1&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <%- include("E:/Web D/Yelcamp/V8-FINAL/partials/navbar.ejs") %>
+
+        <!--For delete MODAL!-->
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Really Want to delete?</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form action="/camps/<%=camp._id%>?_method=DELETE" method="POST">
+                            <input class="btn btn-danger" type="submit" value="SURE??">
+                        </form>
+                        <br>
+                        <a type="button" class="btn btn-primary" href="/camps/<%=camp._id%>">Changed Mind! Back</a>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!--For likes-->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Total likes:
+                            <%=camp.likes.length%>
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                    </div>
+                    <div class="modal-body">
+                        <h4>Liked By:</h4>
+                        <br>
+                        <%for(var i=0;i<camp.likes.length;i++){%>
+                            <p>
+                                <i class="fas fa-user"></i>
+                                <%=camp.likes[i].username%>
+                            </p>
+                            <%}%>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class='row'>
+                <div class="col-md-3">
+                    <p>Google map is to be added here!</p>
+                    <ul class="list-group">
+                        <li class="list-group-item">Cras justo odio</li>
+                        <li class="list-group-item">Dapibus ac facilisis in</li>
+                        <li class="list-group-item">Morbi leo risus</li>
+                        <li class="list-group-item">Porta ac consectetur ac</li>
+                        <li class="list-group-item">Vestibulum at eros</li>
+                    </ul>
+                    <!--<div id="map"></div>-->
+                </div>
+                <div class="col-md-7">
+                    <div class="thumbnail border">
+                        <img alt="Responsive image" src="<%=camp.img%>">
+                        <h4 id="titlepost" class="padding9">
+                            <%=camp.name%>
+                        </h4>
+                        <p id="desc" class="padding9">
+                            <%=camp.description%>
+                                <div>
+                                    Sumbitted by-
+                                    <strong id="usernamesubmitted"><%=camp.author.username%></strong>
+                                </div>
+                                <br>
+                                <%if(currentUser&&currentUser._id.equals(camp.author.id)){%>
+                                    <div id="edit">
+                                        <a class="btn btn-sm btn-success" href="/camps/<%=camp._id%>/edit">EDIT</a>
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-danger" data-toggle="modal" data-target="#myModal">
+                                        DELETE
+                                      </button>
+                                    <%}%>
+
+                                        <br>
+                                        <br>
+
+                                        <form action="/camps/<%=camp._id%>/like/2" method="POST">
+                                            <!--If user is there and has already liked-->
+                                            <%if(currentUser&&camp.likes.some(function(like){ return like.equals(currentUser._id) })){%>
+                                                <button class="btn btn-sm btn-primary">
+                                                <i class="fas fa-thumbs-up"></i> Liked (<%= camp.likes.length %>)
+                                            </button>
+                                                <!--Otherwise we willshow him dark button to tell it is not liked-->
+                                                <%}else{%>
+                                                    <button class="btn btn-sm btn-secondary">
+                                                <i class="fas fa-thumbs-up"></i> Like (<%= camp.likes.length %>)
+                                            </button>
+                                                    <% }%>
+                                                        <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                        See liked users
+                                                        </button>
+                                        </form>
+
+                        </p>
+                    </div>
+                    <br>
+                    <div class="border commentpart">
+                        <div class="text-right">
+                            <a class=" btn btn-success" href="/camps/<%=camp._id%>/comments/new">Add new Comment</a>
+                        </div>
+
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <%camp.comment.forEach(function(comment){%>
+                                    <p id="commentedusername">
+                                        <i class="fas fa-user"></i> <strong><%=comment.author.username%></strong>
+                                    </p>
+                                    <div class="commentsection">
+                                        <p id="commenttext">
+                                            <%=comment.text%>
+                                        </p>
+                                        <span>
+                                            <%if(currentUser && comment.author.id.equals(currentUser._id)){%>
+                                                <form action="/camps/<%=camp._id%>/comments/delete/<%=comment._id%>?_method=DELETE" method="POST" class="formdeletecomment">
+                                                    <button class="btn btn-danger btn-sm del">DELETE THIS</button>
+                                                </form>
+                                                <a type="button" class="btn btn-secondary btn-sm" href="/camps/<%=camp._id%>/comments/<%=comment.id%>/edit">Edit</a>
+                                                <br>
+                                        <%}%>
+                                        <span id="daysago"><%=Math.ceil((Date.now()-comment.date)/86400000)%> days earlier</span>
+                                        </span>
+
+                                    </div>
+                                    <hr>
+                                    <%})%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<script>
+            function initMap() {
+                var lat = <%= camp.lat %>;
+                var lng = <%= camp.lng %>;
+                var center = {
+                    lat: lat,
+                    lng: lng
+                };
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 8,
+                    center: center,
+                    scrollwheel: false
+                });
+                var contentString = `
+                <strong><%= camp.name %><br />
+                <%= camp.location %></strong>
+                <p><%= camp.description %></p>
+              `
+                var infowindow = new google.maps.InfoWindow({
+                    content: contentString
+                });
+                var marker = new google.maps.Marker({
+                    position: center,
+                    map: map
+                });
+                marker.addListener('click', function() {
+                    infowindow.open(map, marker);
+                });
+            }
+        </script>
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB3nV1uH9PoPR4AETGGxF9I_VxDF7wzlUw&callback=initMap"></script>-->
+</body>
+
+</html>

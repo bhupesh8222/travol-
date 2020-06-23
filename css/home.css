@@ -1,0 +1,62 @@
+body {
+    background-color: black;
+    height: 100%;
+    animation-name: images;
+    animation-duration: 50s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+@keyframes images {
+    0% {
+        background-image: url(1.jpg);
+        animation-timing-function: ease-in;
+        animation-delay: 2s;
+    }
+    20% {
+        background-image: url(2.jpg);
+        animation-delay: 2s;
+    }
+    40% {
+        background-image: url(3.jpg);
+        animation-delay: 2s;
+    }
+    60% {
+        background-image: url(4.jpg);
+        animation-delay: 2s;
+    }
+    80% {
+        background-image: url(5.jpg);
+        animation-delay: 2s;
+    }
+    100% {
+        background-image: url(6.jpg);
+        animation-delay: 2s;
+    }
+}
+
+#maindiv {
+    color: white;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    text-align: center;
+    box-sizing: border-box;
+    font-family: 'Fredoka One', cursive;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+a {
+    color: white;
+}

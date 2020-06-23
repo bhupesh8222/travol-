@@ -1,0 +1,119 @@
+body {
+    height: 100%;
+    background-image: url(https://images.pexels.com/photos/1353938/pexels-photo-1353938.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260);
+    background-size: cover;
+}
+
+#profile {
+    width: 30%;
+    text-align: center;
+    border-right: 1px solid;
+    margin-right: 15px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: rgb(255, 255, 204, 0.9);
+}
+
+#top {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+div img {
+    height: 220px;
+    display: inline-block;
+}
+
+.lik {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+#mpost {
+    font-size: 50px;
+    text-align: center;
+    font-family: 'Bree Serif', serif;
+    text-shadow: 2px 2px #FF0000;
+}
+
+#mpost div {
+    font-size: 15px;
+    text-shadow: 0px 0px;
+}
+
+#myprof {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h5 {
+    font-family: 'Bree Serif', serif;
+}
+
+.jumbotron {
+    border-radius: 100px;
+    opacity: 1;
+}
+
+input[type="file"] {
+    font-family: 'Bree Serif', serif;
+    width: 100%;
+}
+
+input[type="submit"] {
+    font-family: 'Bree Serif', serif;
+    height: 30px;
+}
+
+#profilepic {
+    width: 53%;
+    height: 150px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+#profilepic:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.add {
+    font-size: 15px;
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#photo {
+    width: 90%;
+    height: 150px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+#photo:hover {
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+#name {
+    font-family: inherit;
+    text-shadow: 1px 2px #b8b8b8;
+}
+
+.post {
+    border-right: solid 2px black;
+    margin-bottom: 50px;
+}
+
+form {
+    display: inline;
+}
+
+.number {
+    color: red;
+}

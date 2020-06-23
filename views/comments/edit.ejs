@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add New Campground</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/newcampground.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cookie&family=Pacifico&family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <%- include("E:/Web D/Yelcamp/V8-FINAL/partials/navbar.ejs") %>
+        <h1>Edit the comment</h1>
+        <div id="div">
+            <form action='/camps/<%=camp%>/comments/<%=comment._id%>?_method=PUT' method="post">
+                <input type="text" value="<%=comment.text%>" name="newcomment" required>
+                <br>
+                <button class="btn btn-success">SUMBIT</button>
+            </form>
+            <br>
+        </div>
+</body>
+
+</html>

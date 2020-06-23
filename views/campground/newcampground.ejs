@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Add New Post</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/newcampground.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <%- include("E:/Web D/Yelcamp/V8-FINAL/partials/navbar.ejs") %>
+        <h1>Add new Post</h1>
+        <div id="div">
+            <form action='/camps' method="post" enctype="multipart/form-data">
+                <input type="text" placeholder="Post Name (Max 30 characters)" name="camp[name]" required>
+                <br>
+                <input type="file" placeholder="Put your Image here" name='image' accept="image/*" required>
+                <br>
+                <textarea type="text" placeholder="description" name='camp[description]' required></textarea>
+                <button class="btn btn-success">SUMBIT</button>
+            </form>
+            <br>
+            <a class="btn btn-primary" href="/camps">Go Back</a>
+        </div>
+</body>
+
+</html>

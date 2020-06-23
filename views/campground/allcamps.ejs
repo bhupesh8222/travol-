@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>All Posts</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/allcamps.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+</head>
+
+<body>
+
+    <%- include("E:/Web D/Yelcamp/V8-FINAL/partials/navbar.ejs") %>
+
+        <div class="container">
+            <div class="jumbotron text-center">
+                <h1>Travol is here!</h1>
+                <p>Post your best travel experience here</p>
+                <a href="/camps/new" class="btn btn-info">Add new post</a>
+            </div>
+
+
+
+            <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+                <%for(var i=0; i<camps.length; i++){%>
+                    <div class="col-md-3 col-sm-6 post">
+                        <h5 id="pname">
+                            <%= camps[i].name%>
+                        </h5>
+                        <img id="photo" src="<%=camps[i].img%>">
+                        <a href="camps/<%=camps[i]._id%>" class="btn btn-success btn-sm">More Info</a>
+                        <form id="like" action="/camps/<%=camps[i]._id%>/like/1" method="POST">
+                            <!--If user is there and has already liked-->
+                            <%if(currentUser&&camps[i].likes.some(function(like){ return like.equals(currentUser._id) })){%>
+                                <button class="btn btn-sm btn-primary">
+                                    <i class="fas fa-thumbs-up"></i> Liked (<%= camps[i].likes.length %>)
+                                </button>
+                                <!--Otherwise we willshow him dark button to tell it is not liked-->
+                                <%}else{%>
+                                    <button class="btn btn-sm btn-secondary">
+                                    <i class="fas fa-thumbs-up"></i> Like (<%= camps[i].likes.length %>)
+                                </button>
+                                    <% }%>
+                        </form>
+
+                        <!--<%=camps[i].img%> This will not put up the string, so to make it string, it is wrapped inside the "" os src attribute -->
+                    </div>
+                    <%}%>
+            </div>
+
+        </div>
+
+
+
+</body>
+
+</html>

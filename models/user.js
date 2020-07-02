@@ -6,11 +6,8 @@ var userSchema = new mongoose.Schema({
     password: String,
     email: String,
     imgId: String,
-    /*post: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: campsname
-    }*/
-    img: String
+    img: String,
+    isAdmin: { type: Boolean, default: false }
 });
 
 userSchema.plugin(passportLocalMongoose);

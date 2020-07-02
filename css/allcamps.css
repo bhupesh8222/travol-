@@ -6,12 +6,13 @@
 body {
     height: 100%;
     background-image: url(https://images.pexels.com/photos/1353938/pexels-photo-1353938.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260);
-    background-size: contain;
+    background-size: cover;
 }
 
 .jumbotron {
     background-color: gainsboro;
     border-radius: 15px;
+    margin-bottom: 50px;
 }
 
 #photo {
@@ -35,12 +36,6 @@ body {
 }
 
 .post {
-    border-right: solid 2px black;
     margin-bottom: 70px;
     background-color: white;
-}
-
-#pname {
-    font-family: inherit;
-    text-shadow: 1px 2px #b8b8b8;
 }

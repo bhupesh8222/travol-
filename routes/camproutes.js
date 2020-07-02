@@ -365,14 +365,14 @@ function isloggedIn(req, res, next) {
 //only the author will have access to update, edit & delete the campground!
 function checkownership(req, res, next) {
     //check if user logged in
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated() || req.currentUser.isAdmin) {
         //check if the current user is the creator of the campground
         campModel.findById(req.params.id, function(error, camp) {
             if (error) {
                 console.log(error);
             } else {
                 //the id of campground in author and _id of user is an string, so this method compares them taking this faactor in consideration.
-                if (camp.author.id.equals(req.user._id)) { //buitl in method with mongoose
+                if (camp.author.id.equals(req.user._id) || req.user.isAdmin) { //buitl in method with mongoose
                     next();
                 } else {
                     req.flash("error", "PERMISSION DENIED");

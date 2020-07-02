@@ -125,7 +125,7 @@ function checkCommentOwnership(req, res, next) {
                 console.log(error);
             } else {
                 //whether the comment creator is the logged in user!
-                if (comment.author.id.equals(req.user._id)) { //buitin in method with mongoose
+                if (comment.author.id.equals(req.user._id) || req.user.isAdmin) { //buitin in method with mongoose
                     next();
                 } else {
                     res.send("You don't have the permission to do that");

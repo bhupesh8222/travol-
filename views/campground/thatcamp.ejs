@@ -113,7 +113,7 @@
                                     <strong id="usernamesubmitted"><%=camp.author.username%></strong>
                                 </div>
                                 <br>
-                                <%if(currentUser&&currentUser._id.equals(camp.author.id)){%>
+                                <%if(currentUser&&currentUser._id.equals(camp.author.id)|| currentUser && currentUser.isAdmin){%>
                                     <div id="edit">
                                         <a class="btn btn-sm btn-success" href="/camps/<%=camp._id%>/edit">EDIT</a>
                                     </div>
@@ -163,7 +163,7 @@
                                             <%=comment.text%>
                                         </p>
                                         <span>
-                                            <%if(currentUser && comment.author.id.equals(currentUser._id)){%>
+                                            <%if(currentUser && comment.author.id.equals(currentUser._id)|| currentUser && currentUser.isAdmin){%>
                                                 <form action="/camps/<%=camp._id%>/comments/delete/<%=comment._id%>?_method=DELETE" method="POST" class="formdeletecomment">
                                                     <button class="btn btn-danger btn-sm del">DELETE THIS</button>
                                                 </form>

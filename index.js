@@ -22,16 +22,25 @@ var userModel = require("./models/user.js");
 //index
 
 
-
+//mongodb://localhost:27017/campp
 //MONGOOSE CONFIG
-mongoose.connect("mongodb://localhost:27017/campp", {
+mongoose.connect("mongodb+srv://bhupesh8222:bhupesh8222@cluster0.pd8xh.mongodb.net/mydatabvase?retryWrites=true&w=majority", {
     useUnifiedTopology: true,
     useNewUrlParser: true
 });
 
+/*const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://bhupesh8222:bhupesh8222@cluster0.pd8xh.mongodb.net/mydatabvase?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+    const collection = client.db("test").collection("devices");
+    // perform actions on the collection object
+    client.close();
+});*/
+
 mongoose.connection.once("open", function() {
     console.log("Connected to the database!!!");
-});
+})
 
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);

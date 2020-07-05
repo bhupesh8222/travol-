@@ -24,10 +24,21 @@ var userModel = require("./models/user.js");
 
 //mongodb://localhost:27017/campp
 //MONGOOSE CONFIG
-mongoose.connect("mongodb+srv://bhupesh8222:bhupesh8222@cluster0.pd8xh.mongodb.net/mydatabvase?retryWrites=true&w=majority", {
+/*mongoose.connect("mongodb+srv://bhupesh8222:bhupesh8222@cluster0.pd8xh.mongodb.net/mydatabvase?retryWrites=true&w=majority", {
     useUnifiedTopology: true,
     useNewUrlParser: true
-});
+});*/
+
+const URI = "mongodb+srv://bhupesh8222:bhupesh8222@cluster0.pd8xh.mongodb.net/mydatabvase?retryWrites=true&w=majority";
+
+mongoose.connect(URI, { useUnifiedTopology: true, useNewUrlParser: true })
+    .then((res) => {
+        console.log("connected to DB");
+    })
+    .catch((err) => {
+        console.log("Encountered error...");
+        console.log("error : " + err);
+    });
 
 /*const MongoClient = require('mongodb').MongoClient;
 const uri = "mongodb+srv://bhupesh8222:bhupesh8222@cluster0.pd8xh.mongodb.net/mydatabvase?retryWrites=true&w=majority";
@@ -36,11 +47,11 @@ client.connect(err => {
     const collection = client.db("test").collection("devices");
     // perform actions on the collection object
     client.close();
-});*/
+});
 
 mongoose.connection.once("open", function() {
     console.log("Connected to the database!!!");
-})
+})*/
 
 mongoose.set('useCreateIndex', true);
 mongoose.set('useFindAndModify', false);

@@ -148,6 +148,7 @@ app.use("/camps/:id/comments", commentroutes); //we will need to merge params.
 app.use(authroutes);
 
 
-app.listen(process.env.PORT, process.env.IP, function() {
-    console.log("SERVER HAS STARTED!!");
-});
+app.listen(process.env.PORT, process.env.IP,
+    function() {
+        console.log("SERVER HAS STARTED!!");
+    });

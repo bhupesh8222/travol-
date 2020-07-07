@@ -7,7 +7,7 @@ var commentModel = require('../models/comments.js');
 var userModel = require("../models/user.js");
 var path = require("path");
 var cloudinary = require("cloudinary").v2;
-var fs = require('fs');
+
 
 //CLOUDINARY CONFIG
 cloudinary.config({
@@ -33,9 +33,6 @@ var geocoder = NodeGeocoder(options);*/
 
 //destination is used to determine within which folder the uploaded files should be stored
 var storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        cb(null, 'upload');
-    },
     filename: function(req, file, cb) {
         cb(null, Date.now() + file.originalname);
     }
@@ -97,12 +94,6 @@ router.post('/', isloggedIn, upload.single("image"), function(req, res) {
 
         const path = req.file.path;
 
-        fs.unlink(path, (err) => {
-            if (err) {
-                console.error(err)
-                return
-            }
-        })
     });
 })
 
@@ -160,12 +151,8 @@ router.put("/:id", checkownership, upload.single("image"), function(req, res) {
                     camp.description = req.body.camp.description;
                     camp.save(function() {
                         //After saving we are to redirect it!
-                        fs.unlink(req.file.path, function(err) {
-                            if (err)
-                                return res.redirect("back");
-                            req.flash("success", "SUCCESSFULLY UPDATED!")
-                            res.redirect("/camps/" + req.params.id);
-                        });
+                        req.flash("success", "SUCCESSFULLY UPDATED!")
+                        res.redirect("/camps/" + req.params.id);
                     })
                 })
             })
@@ -337,12 +324,7 @@ router.post("/:id/addprofile/photo", isloggedIn, upload.single("image"), functio
                     user.imgId = result.public_id;
                     user.save();
                     req.flash("success", "PROFILE PHOTO ADDED SUCCESSFULLY");
-                    fs.unlink(req.file.path, function(err) {
-                        if (err) throw err;
-                        // we are deleting the file in the upload as there's no benefit of saving it when already it is added to the cloudinary
-                        console.log('File deleted!');
-                        res.redirect("/camps/profile/1");
-                    });
+                    res.redirect("/camps/profile/1");
                 })
             }
         })

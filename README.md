@@ -3,5 +3,3 @@ Travol is a travel experience sharing website, where you can share your best tra
 
 The frontend is created using HTML, CSS, JS, Bootstrap. The backend is created using NodeJs, MongoDB.
 
-
-https://powerful-meadow-48210.herokuapp.com/

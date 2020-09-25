@@ -8,7 +8,7 @@ For authentication local strategy is used.
 
 **Home Page**
 
-![image](https://user-images.githubusercontent.com/66379767/94283341-815c0b80-ff6e-11ea-87c6-86dca17989c7.png)
+![image](https://user-images.githubusercontent.com/66379767/94285893-f11fc580-ff71-11ea-992e-5934cb4db690.png)
 
 **Login Page**
 
